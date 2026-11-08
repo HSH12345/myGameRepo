@@ -1,0 +1,37 @@
+# Visual Studio / MSBuild
+.vs/
+**/x64/
+**/Debug/
+**/Release/
+*.user
+*.suo
+*.VC.db
+*.VC.opendb
+*.pdb
+*.ilk
+*.obj
+*.iobj
+*.ipdb
+*.tlog
+*.recipe
+
+# Runtime binaries and local database/auth configuration
+*.exe
+*.dll
+*.lib
+*.env
+.env
+
+# Local sync metadata
+*.ffs_db
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# .NET server manager
+**/bin/
+**/obj/
+artifacts/

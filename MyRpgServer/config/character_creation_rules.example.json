@@ -1,0 +1,6 @@
+{
+  "templates": [
+    { "race": 0, "gender": 0, "level": 1, "equipment": [] },
+    { "race": 0, "gender": 1, "level": 1, "equipment": [] }
+  ]
+}

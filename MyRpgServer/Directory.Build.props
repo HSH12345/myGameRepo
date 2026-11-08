@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <RpgDepsRoot Condition="'$(RpgDepsRoot)' == ''">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..'))</RpgDepsRoot>
+    <MySqlRoot Condition="'$(MySqlRoot)' == '' and Exists('$(ProgramW6432)\MySQL\MySQL Server 8.0\include\mysql.h')">$(ProgramW6432)\MySQL\MySQL Server 8.0</MySqlRoot>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+</Project>

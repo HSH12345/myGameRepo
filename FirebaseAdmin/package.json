@@ -1,0 +1,21 @@
+{
+  "name": "firebaseadmin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": { "node": ">=22.14.0" },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2",
+    "firebase-admin": "^13.2.0",
+    "nodemon": "^3.1.9",
+    "uuid": "^11.1.0"
+  }
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Matches Content/Firebase 12.5.0 / Android/firebase_dependencies.gradle.
+     AuthManager supplies explicit Firebase AppOptions, so this bridge does
+     not run the google-services plugin. Never embed service-account keys. -->
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+    <buildGradleAdditions>
+        <insert>
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:33.7.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.android.gms:play-services-base:18.5.0'
+}
+        </insert>
+    </buildGradleAdditions>
+    <resourceCopies>
+        <copyFile src="$S(PluginDir)/../../Content/Firebase/libs/android/app.pro" dst="$S(BuildDir)/gradle/app/firebase-app.pro" />
+        <copyFile src="$S(PluginDir)/../../Content/Firebase/libs/android/auth.pro" dst="$S(BuildDir)/gradle/app/firebase-auth.pro" />
+        <copyFile src="$S(PluginDir)/../../Content/Firebase/libs/android/analytics.pro" dst="$S(BuildDir)/gradle/app/firebase-analytics.pro" />
+    </resourceCopies>
+    <proguardAdditions>
+        <insert>
+-include firebase-app.pro
+-include firebase-auth.pro
+-include firebase-analytics.pro
+        </insert>
+    </proguardAdditions>
+</root>

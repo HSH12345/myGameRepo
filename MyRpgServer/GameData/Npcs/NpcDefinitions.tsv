@@ -1,0 +1,7 @@
+npcIndex	name	appearanceIndex	role	roleDataId	combatType	hp	mp	attack	defense	evasion	accuracy
+1001	Elf Village Guide	1	5	1	0	0	0	0	0	0	0
+2001	Elf Combat Template	1	4	0	1	100	30	15	5	10	75
+1002	Village Merchant	1	2	1	0	0	0	0	0	0	0
+2101	Goblin Soldier	2	4	0	1	65	0	8	1	0	80
+2102	Goblin Veteran	3	4	0	1	120	30	12	3	5	85
+2201	Megaspikan	4	4	0	1	1200	0	12	3	0	100

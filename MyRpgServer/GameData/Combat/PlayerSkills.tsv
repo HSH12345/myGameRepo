@@ -1,0 +1,11 @@
+abilityId	name	icon	aim	motion	piercing	moveCm	initialRank	maxRank
+3	비전 탄환	Bolt	0	0	0	0	1	5
+4	화염 폭발	Burst	1	0	0	0	1	5
+10	강격	Sword	0	0	0	0	0	5
+11	돌진 베기	Sword	0	1	0	600	0	5
+12	후퇴 사격	Bolt	0	2	0	350	0	5
+13	화염탄	Burst	2	0	0	0	0	5
+14	관통 창	Bolt	2	0	1	0	0	5
+15	비전 파동	Burst	3	0	0	0	0	5
+16	비전 광선	Bolt	2	0	0	0	0	5
+17	전방 충격파	Sword	2	0	0	0	0	5

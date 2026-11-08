@@ -1,0 +1,5 @@
+appearanceIndex	mesh	idle	yawMilliDegrees	scaleMilli
+1	/Game/Characters/Elves/BaseMesh/SK_ElfArden.SK_ElfArden	/Game/Characters/Elves/Animations/AS_idle.AS_idle	-90000	1000
+2	/Game/Characters/GoblinLegionnaire/Soldier/SK_Soldier.SK_Soldier	/Game/Characters/GoblinLegionnaire/Soldier/AS_Idle.AS_Idle	-90000	1000
+3	/Game/Characters/GoblinLegionnaire/Veteran/SK_Veteran.SK_Veteran	/Game/Characters/GoblinLegionnaire/Veteran/AS_Idle.AS_Idle	-90000	1000
+4	/Game/Characters/Megaspikan/Meshes/SK_Megaspikan_Body.SK_Megaspikan_Body	/Game/Characters/Megaspikan/Animations/ANIM_Megaspikan_Idle.ANIM_Megaspikan_Idle	-90000	150

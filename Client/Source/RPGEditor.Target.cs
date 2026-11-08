@@ -1,0 +1,16 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+using UnrealBuildTool;
+using System.Collections.Generic;
+
+public class RPGEditorTarget : TargetRules
+{
+    public RPGEditorTarget(TargetInfo target) : base(target)
+    {
+        Type = TargetType.Editor;
+        DefaultBuildSettings = BuildSettingsVersion.V7;
+        IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_8;
+        ExtraModuleNames.Add("RPG");
+    }
+
+}
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+	<ClCompile Include="Managers\AccountPresenceManager.cpp"><Filter>Source Files\Managers</Filter></ClCompile>
+    <Filter Include="Source Files"><UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier><Extensions>cpp;c;cc;cxx</Extensions></Filter>
+    <Filter Include="Header Files"><UniqueIdentifier>{93995380-89BD-4B04-88EB-625FBE52EBFB}</UniqueIdentifier><Extensions>h;hh;hpp;hxx;inl</Extensions></Filter>
+    <Filter Include="Source Files\Managers"><UniqueIdentifier>{C242D72B-5136-4B36-91D5-D0ACF18BEE1A}</UniqueIdentifier></Filter>
+    <Filter Include="Header Files\Managers"><UniqueIdentifier>{AA1BC234-BA28-47CE-8F75-959305B4ED22}</UniqueIdentifier></Filter>
+    <Filter Include="Header Files\Packet"><UniqueIdentifier>{77120F18-C1B4-4989-95D4-850441429CEB}</UniqueIdentifier></Filter>
+  </ItemGroup>
+  <ItemGroup>
+	<ClInclude Include="Managers\AccountPresenceManager.h"><Filter>Header Files\Managers</Filter></ClInclude>
+    <ClCompile Include="ServerMain.cpp"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="Managers\LoginManager.cpp"><Filter>Source Files\Managers</Filter></ClCompile>
+    <ClCompile Include="Managers\RecvManager.cpp"><Filter>Source Files\Managers</Filter></ClCompile>
+    <ClCompile Include="Managers\SendManager.cpp"><Filter>Source Files\Managers</Filter></ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Urls.h"><Filter>Header Files</Filter></ClInclude>
+    <ClInclude Include="Managers\AccountDataClient.h"><Filter>Header Files\Managers</Filter></ClInclude>
+    <ClInclude Include="Managers\LoginManager.h"><Filter>Header Files\Managers</Filter></ClInclude>
+    <ClInclude Include="Managers\RecvManager.h"><Filter>Header Files\Managers</Filter></ClInclude>
+    <ClInclude Include="Managers\SendManager.h"><Filter>Header Files\Managers</Filter></ClInclude>
+    <ClInclude Include="Packet\BinaryPackets.h"><Filter>Header Files\Packet</Filter></ClInclude>
+    <ClInclude Include="Packet\PacketHaders.h"><Filter>Header Files\Packet</Filter></ClInclude>
+  </ItemGroup>
+</Project>

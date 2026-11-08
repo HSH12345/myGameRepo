@@ -1,0 +1,5 @@
+node_modules/
+*-firebase-adminsdk-*.json
+*.ffs_db
+.env
+backups/

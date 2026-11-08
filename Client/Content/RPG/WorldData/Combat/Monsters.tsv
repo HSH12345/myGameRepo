@@ -1,0 +1,4 @@
+npcIndex	basicAbility	skillAbility	aggroCm	leashCm	speedCmPerSec	respawnMs	bodyRadiusCm	bodyHeightCm	solidRadiusCm
+2101	1	0	800	1600	240	15000	40	160	0
+2102	1	5	900	1800	210	20000	40	160	0
+2201	0	6	4000	6000	280	60000	360	740	320

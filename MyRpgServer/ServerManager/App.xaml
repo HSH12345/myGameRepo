@@ -1,0 +1,97 @@
+<Application x:Class="RpgServerManager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <FontFamily x:Key="AppFont">Segoe UI Variable Text, Segoe UI</FontFamily>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#0B1020" />
+        <SolidColorBrush x:Key="PanelBrush" Color="#11182B" />
+        <SolidColorBrush x:Key="PanelAltBrush" Color="#172038" />
+        <SolidColorBrush x:Key="BorderBrush" Color="#24304A" />
+        <SolidColorBrush x:Key="TextBrush" Color="#EAF0FF" />
+        <SolidColorBrush x:Key="MutedTextBrush" Color="#8290AC" />
+        <SolidColorBrush x:Key="AccentBrush" Color="#5B8CFF" />
+        <SolidColorBrush x:Key="SuccessBrush" Color="#35D39A" />
+        <SolidColorBrush x:Key="WarningBrush" Color="#F5B942" />
+        <SolidColorBrush x:Key="ErrorBrush" Color="#FF6685" />
+
+        <Style TargetType="Window">
+            <Setter Property="FontFamily" Value="{StaticResource AppFont}" />
+            <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        </Style>
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="18,10" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Root" Background="{TemplateBinding Background}" CornerRadius="8" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Root" Property="Opacity" Value="0.88" /></Trigger>
+                            <Trigger Property="IsEnabled" Value="False"><Setter TargetName="Root" Property="Opacity" Value="0.35" /></Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="{StaticResource PanelAltBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+        <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="#382035" />
+            <Setter Property="Foreground" Value="#FF9AB0" />
+        </Style>
+        <Style x:Key="ChipToggle" TargetType="ToggleButton">
+            <Setter Property="Foreground" Value="{StaticResource MutedTextBrush}" />
+            <Setter Property="Background" Value="#0D1426" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="12,6" />
+            <Setter Property="Margin" Value="0,0,7,0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border x:Name="Chip" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="12" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Chip" Property="Background" Value="#22365F" />
+                                <Setter TargetName="Chip" Property="BorderBrush" Value="#5B8CFF" />
+                                <Setter Property="Foreground" Value="#DCE7FF" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Chip" Property="BorderBrush" Value="#6F86B8" /></Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+            <Setter Property="Background" Value="#0D1426" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+            <Setter Property="CaretBrush" Value="White" />
+            <Setter Property="Padding" Value="10,7" />
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="#172038" />
+            <Setter Property="Background" Value="#EAF0FF" />
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}" />
+            <Setter Property="Padding" Value="8,5" />
+        </Style>
+    </Application.Resources>
+</Application>

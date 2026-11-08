@@ -1,0 +1,40 @@
+"""Wine-colored inverted hull. No CustomDepth writes: preserve own-player reveal."""
+from pathlib import Path
+import shutil
+import unreal
+tools=unreal.AssetToolsHelpers.get_asset_tools();lib=unreal.MaterialEditingLibrary
+path='/Game/RPG/Camera/M_AttackOutline'
+file=Path(unreal.Paths.project_dir())/'Content/RPG/Camera/M_AttackOutline.uasset'
+backup=Path('C:/Users/hsh/Desktop/TcpIP/IOCP/MyRpgServer/artifacts/QuickSlotInput-20261018/backup/client/Content/RPG/Camera/M_AttackOutline.uasset')
+if file.exists() and not backup.exists():backup.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(file,backup)
+m=unreal.load_asset(path) or tools.create_asset('M_AttackOutline','/Game/RPG/Camera',unreal.Material,unreal.MaterialFactoryNew())
+lib.delete_all_material_expressions(m)
+m.set_editor_property('shading_model',unreal.MaterialShadingModel.MSM_UNLIT)
+m.set_editor_property('blend_mode',unreal.BlendMode.BLEND_MASKED)
+m.set_editor_property('two_sided',True)
+lib.set_material_usage(m,unreal.MaterialUsage.MATUSAGE_SKELETAL_MESH)
+def expression(cls):return lib.create_material_expression(m,cls)
+color=expression(unreal.MaterialExpressionConstant3Vector);color.set_editor_property('constant',unreal.LinearColor(.22,.006,.035,1))
+eye=expression(unreal.MaterialExpressionEyeAdaptation)
+stable=expression(unreal.MaterialExpressionDivide)
+lib.connect_material_expressions(color,'',stable,'A');lib.connect_material_expressions(eye,'',stable,'B')
+lib.connect_material_property(stable,'',unreal.MaterialProperty.MP_EMISSIVE_COLOR)
+sign=expression(unreal.MaterialExpressionTwoSidedSign)
+mask=expression(unreal.MaterialExpressionCustom);entry=unreal.CustomInput();entry.set_editor_property('input_name','Side');mask.set_editor_property('inputs',[entry])
+mask.set_editor_property('output_type',unreal.CustomMaterialOutputType.CMOT_FLOAT1);mask.set_editor_property('code','return saturate((1-Side)*0.5);')
+lib.connect_material_expressions(sign,'',mask,'Side');lib.connect_material_property(mask,'',unreal.MaterialProperty.MP_OPACITY_MASK)
+normal=expression(unreal.MaterialExpressionVertexNormalWS)
+camera=expression(unreal.MaterialExpressionCameraPositionWS);actor=expression(unreal.MaterialExpressionActorPositionWS)
+distance=expression(unreal.MaterialExpressionDistance)
+lib.connect_material_expressions(camera,'',distance,'A');lib.connect_material_expressions(actor,'',distance,'B')
+ratio=expression(unreal.MaterialExpressionConstant);ratio.set_editor_property('r',.004)
+scaled=expression(unreal.MaterialExpressionMultiply)
+lib.connect_material_expressions(distance,'',scaled,'A');lib.connect_material_expressions(ratio,'',scaled,'B')
+width=expression(unreal.MaterialExpressionClamp);width.set_editor_property('min_default',2);width.set_editor_property('max_default',12)
+if not lib.connect_material_expressions(scaled,'',width,''):raise RuntimeError('Outline clamp input missing')
+offset=expression(unreal.MaterialExpressionMultiply)
+lib.connect_material_expressions(normal,'',offset,'A');lib.connect_material_expressions(width,'',offset,'B')
+lib.connect_material_property(offset,'',unreal.MaterialProperty.MP_WORLD_POSITION_OFFSET)
+lib.recompile_material(m)
+if not unreal.EditorAssetLibrary.save_loaded_asset(m):raise RuntimeError('Outline save failed')
+unreal.log('ATTACK_OUTLINE_SAVED wine backfaces-only exposure-stable distance-scaled-width2-12cm')

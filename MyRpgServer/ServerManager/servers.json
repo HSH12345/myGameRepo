@@ -1,0 +1,148 @@
+{
+  "logRetention": 20000,
+  "shutdownTimeoutSeconds": 30,
+  "servers": [
+    {
+      "id": "firebase-admin",
+      "displayName": "Firebase Admin Web",
+      "description": "게스트 UID와 Firebase custom token을 발급하는 Express 서버",
+      "group": "WEB",
+      "executable": "node",
+      "arguments": "index.js",
+      "workingDirectory": "{RepoRoot}\\..\\FirebaseAdmin",
+      "shutdownCommand": "-shutdown",
+      "shutdownUrl": "http://127.0.0.1:3000/admin/shutdown",
+      "port": 3000,
+      "startOrder": 10,
+      "autoStart": false,
+      "environment": {
+        "PORT": "3000",
+        "FIREBASE_SERVICE_ACCOUNT": "{RepoRoot}\\..\\FirebaseAdmin\\service-account.json"
+      },
+      "requiredEnvironment": []
+    },
+    {
+      "id": "character-data-server",
+      "displayName": "Character Data Server",
+      "description": "캐릭터 목록과 캐릭터 단위 영속 데이터를 담당하는 내부 서버",
+      "group": "IOCP",
+      "executable": "{RepoRoot}\\x64\\Debug\\CharacterDataServer.exe",
+      "arguments": "",
+      "workingDirectory": "{RepoRoot}\\x64\\Debug",
+      "shutdownCommand": "-shutdown",
+      "port": 9300,
+      "startOrder": 15,
+      "autoStart": false,
+      "environment": {
+        "RPG_ITEM_DATA_ROOT": "{RepoRoot}\\GameData\\Items",
+        "RPG_CHARACTER_ECONOMY_ENABLED": "1"
+      },
+      "requiredEnvironment": [
+        "RPG_CHARACTER_DB_PASSWORD"
+      ]
+    },
+    {
+      "id": "login-server",
+      "displayName": "Login Server",
+      "description": "IOCP 기반 게스트 로그인 및 토큰 검증 서버",
+      "group": "IOCP",
+      "executable": "{RepoRoot}\\x64\\Debug\\LogInServer.exe",
+      "arguments": "",
+      "workingDirectory": "{RepoRoot}\\x64\\Debug",
+      "shutdownCommand": "-shutdown",
+      "port": 9001,
+      "startOrder": 20,
+      "autoStart": false,
+      "environment": {
+        "RPG_WORLD_DATA_ENABLED": "1",
+        "RPG_WORLD_DATA_PORT": "9400",
+        "RPG_GAME_PORT": "9200",
+        "RPG_GAME_DEFAULT_INSTANCE": "1"
+      },
+      "requiredEnvironment": []
+    },
+    {
+      "id": "account-data-server",
+      "displayName": "Account Data Server",
+      "description": "계정 자격 증명 및 접속 상태를 저장·조회하는 내부 서버",
+      "group": "IOCP",
+      "executable": "{RepoRoot}\\x64\\Debug\\AccountDataServer.exe",
+      "arguments": "",
+      "workingDirectory": "{RepoRoot}\\x64\\Debug",
+      "shutdownCommand": "-shutdown",
+      "port": 9100,
+      "startOrder": 14,
+      "autoStart": false,
+      "environment": {},
+      "requiredEnvironment": [
+        "RPG_ACCOUNT_DB_PASSWORD"
+      ]
+    },
+    {
+      "id": "game-server",
+      "displayName": "Game Server",
+      "description": "PeaceWorld · 독립 던전 입장/복귀 · 서버 권한 이동",
+      "group": "IOCP",
+      "executable": "{RepoRoot}\\x64\\Debug\\GameServer.exe",
+      "arguments": "",
+      "workingDirectory": "{RepoRoot}\\x64\\Debug",
+      "shutdownCommand": "-shutdown",
+      "port": 9200,
+      "startOrder": 40,
+      "autoStart": false,
+      "environment": {
+        "RPG_GAME_WORLD_MANIFEST": "{RepoRoot}\\artifacts\\PeaceWorldHub02-v11\\world.rpgworld",
+        "RPG_GAME_NPC_ROOT": "{RepoRoot}\\GameData\\Npcs",
+        "RPG_GAME_EXIT_RULES": "{RepoRoot}\\GameData\\Dungeons\\ExitRules.tsv",
+        "RPG_GAME_DUNGEON_MANIFEST": "{RepoRoot}\\artifacts\\Dungeon01-v3\\world.rpgworld",
+        "RPG_GAME_DUNGEON_CAPACITY": "8",
+        "RPG_GAME_DEFAULT_INSTANCE": "1",
+        "RPG_ITEM_DATA_ROOT": "{RepoRoot}\\GameData\\Items",
+        "RPG_GAME_ECONOMY_ENABLED": "1",
+        "RPG_COMBAT_DATA_ROOT": "{RepoRoot}\\GameData\\Combat",
+        "RPG_WORLD_DATA_ENABLED": "1",
+        "RPG_WORLD_DATA_PORT": "9400",
+        "RPG_GAME_PORT": "9200"
+      },
+      "requiredEnvironment": []
+    },
+    {
+      "id": "gate-server",
+      "displayName": "Gate Server",
+      "description": "사용자 접속 및 로그인/게임 내부 다중화 연결 (로컬 개발)",
+      "group": "IOCP",
+      "executable": "{RepoRoot}\\x64\\Debug\\GateServer.exe",
+      "arguments": "",
+      "workingDirectory": "{RepoRoot}\\x64\\Debug",
+      "shutdownCommand": "-shutdown",
+      "port": 9000,
+      "startOrder": 50,
+      "autoStart": false,
+      "environment": {},
+      "requiredEnvironment": []
+    },
+    {
+      "id": "world-data-server",
+      "displayName": "World Data Server",
+      "description": "world_db 맵 메타데이터와 GameServer 가동 lease를 관리하는 내부 서버",
+      "group": "IOCP",
+      "executable": "{RepoRoot}\\x64\\Debug\\WorldDataServer.exe",
+      "arguments": "",
+      "workingDirectory": "{RepoRoot}\\x64\\Debug",
+      "shutdownCommand": "-shutdown",
+      "port": 9400,
+      "startOrder": 16,
+      "autoStart": false,
+      "environment": {
+        "RPG_WORLD_DB_HOST": "127.0.0.1",
+        "RPG_WORLD_DB_PORT": "3307",
+        "RPG_WORLD_DB_USER": "root",
+        "RPG_WORLD_DB_NAME": "world_db",
+        "RPG_WORLD_DATA_PORT": "9400"
+      },
+      "requiredEnvironment": [
+        "RPG_WORLD_DB_PASSWORD"
+      ]
+    }
+  ]
+}

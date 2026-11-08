@@ -1,0 +1,14 @@
+{
+  "Windows": {
+    "target": "RPG",
+    "platform": "Win64",
+    "archiveFolder": "Windows"
+  },
+  "Android": {
+    "target": "RPG",
+    "platform": "Android",
+    "cookFlavor": "ASTC",
+    "architecture": "arm64",
+    "archiveFolder": "Android_ASTC"
+  }
+}

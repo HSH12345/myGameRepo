@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><VCProjectVersion>17.0</VCProjectVersion><Keyword>Win32Proj</Keyword><ProjectGuid>{6A27B75E-98EE-4D33-B392-A382519E8CB9}</ProjectGuid><RootNamespace>CharacterDataServer</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration"><ConfigurationType>Application</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries><PlatformToolset>v143</PlatformToolset><CharacterSet>Unicode</CharacterSet></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration"><ConfigurationType>Application</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><PlatformToolset>v143</PlatformToolset><WholeProgramOptimization>true</WholeProgramOptimization><CharacterSet>Unicode</CharacterSet></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"><ClCompile><WarningLevel>Level4</WarningLevel><SDLCheck>true</SDLCheck><PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions><ConformanceMode>true</ConformanceMode><LanguageStandard>stdcpp20</LanguageStandard><AdditionalIncludeDirectories>$(RpgDepsRoot)\nlohmann\include;$(MySqlRoot)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories></ClCompile><Link><SubSystem>Console</SubSystem><GenerateDebugInformation>true</GenerateDebugInformation><AdditionalLibraryDirectories>$(MySqlRoot)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories><AdditionalDependencies>libmysql.lib</AdditionalDependencies></Link></ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'"><ClCompile><WarningLevel>Level4</WarningLevel><FunctionLevelLinking>true</FunctionLevelLinking><IntrinsicFunctions>true</IntrinsicFunctions><SDLCheck>true</SDLCheck><PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions><ConformanceMode>true</ConformanceMode><LanguageStandard>stdcpp20</LanguageStandard><AdditionalIncludeDirectories>$(RpgDepsRoot)\nlohmann\include;$(MySqlRoot)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories></ClCompile><Link><SubSystem>Console</SubSystem><EnableCOMDATFolding>true</EnableCOMDATFolding><OptimizeReferences>true</OptimizeReferences><GenerateDebugInformation>true</GenerateDebugInformation><AdditionalLibraryDirectories>$(MySqlRoot)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories><AdditionalDependencies>libmysql.lib</AdditionalDependencies></Link></ItemDefinitionGroup>
+  <ItemGroup><ClCompile Include="ServerMain.cpp"/><ClCompile Include="../DatabaseCore/MySqlConnectionPool.cpp"/><ClCompile Include="CharacterService.cpp"/><ClCompile Include="CharacterRepository.cpp"/><ClCompile Include="CharacterCreationRules.cpp"/></ItemGroup>
+  <ItemGroup><ClInclude Include="../DatabaseCore/MySqlConnectionPool.h"/><ClInclude Include="../DatabaseCore/MySql.h"/><ClInclude Include="CharacterService.h"/><ClInclude Include="CharacterRepository.h"/><ClInclude Include="CharacterCreationRules.h"/><ClInclude Include="..\Protocol\CharacterPackets.h"/><ClInclude Include="..\Protocol\CreateCharacterPackets.h"/></ItemGroup>
+  <ItemGroup><ProjectReference Include="..\ServerCore\ServerCore.vcxproj"><Project>{A6B53615-96A2-4C90-8E52-D4B214FF0A27}</Project></ProjectReference></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Target Name="CopyEconomyTables" AfterTargets="Build">
+    <ItemGroup><EconomyTable Include="$(ProjectDir)..\GameData\Items\*.tsv" /></ItemGroup>
+    <Copy SourceFiles="@(EconomyTable)" DestinationFolder="$(OutDir)GameData\Items" SkipUnchangedFiles="true" />
+  </Target>
+</Project>
